@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UK Fintech & AI Ecosystem, Zain Ventures Investment Brief · Maz Ismail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --cream:#1A1A1A; --paper:#111111; --white:#1E1E1E;
+  --ink:#E8E4DC; --ink2:#C8C4BC; --rule:#333333; --rule2:#2A2A2A;
+  --muted:#888880; --navy:#111827; --navy2:#2A5AAB;
+  --green:#0A4A28; --green2:#1A7A48;
+  --red:#9A2424; --gold:#7A5A14; --gold2:#C49A2C;
+  --camb:#006B54;
+}
+body{background:#000000;color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-size:13px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.page{max-width:1320px;margin:0 auto}
+
+/* ── MASTHEAD ── */
+.masthead{background:#0A0A0A;color:var(--cream);position:relative;overflow:hidden;border-bottom:1px solid #222}
+.masthead::after{content:'';position:absolute;top:0;right:0;bottom:0;width:260px;background:repeating-linear-gradient(-45deg,rgba(255,255,255,.015) 0px,rgba(255,255,255,.015) 1px,transparent 1px,transparent 12px)}
+.masthead-top{display:grid;grid-template-columns:1fr auto;gap:32px;padding:40px 56px 0;align-items:start}
+.mh-firm{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px}
+.mh-title{font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,40px);font-weight:400;line-height:1.12;color:var(--cream)}
+.mh-title em{font-style:italic;color:var(--gold2)}
+.mh-meta{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.25);line-height:2.4;text-align:right;white-space:nowrap;padding-top:4px}
+.mh-abstract{padding:20px 56px 0;font-size:12px;color:rgba(255,255,255,.4);max-width:720px;line-height:1.8}
+.mh-rule{margin-top:32px;height:2px;background:linear-gradient(90deg,var(--gold2) 0%,rgba(196,154,44,.2) 100%)}
+.mh-class{background:#7A1414;padding:6px 56px;font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.5)}
+
+/* ── STATS ROW ── */
+.mh-stats{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid rgba(255,255,255,.08);margin-top:0}
+.stat{padding:20px 24px;border-right:1px solid rgba(255,255,255,.08)}
+.stat:last-child{border-right:none}
+.stat-val{font-family:'Playfair Display',serif;font-size:26px;color:var(--gold2);line-height:1}
+.stat-lbl{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:5px}
+.stat-sub{font-size:10px;color:rgba(255,255,255,.2);margin-top:3px}
+
+/* ── NAV TABS ── */
+.topnav{background:#0D0D0D;border-bottom:3px solid var(--gold2);position:sticky;top:0;z-index:200;padding:0 56px;display:flex;overflow-x:auto;border-top:1px solid #222}
+.tn-btn{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:16px 22px;cursor:pointer;color:rgba(255,255,255,.45);border:none;background:none;border-bottom:3px solid transparent;margin-bottom:-3px;white-space:nowrap;transition:all .15s}
+.tn-btn:hover{color:rgba(255,255,255,.85);background:rgba(255,255,255,.06)}
+.tn-btn.active{color:#ffffff;border-bottom-color:var(--gold2);background:rgba(196,154,44,.12)}
+.tn-sep{width:1px;background:rgba(255,255,255,.12);margin:10px 4px;flex-shrink:0}
+
+/* ── SECTIONS ── */
+.sec{display:none}.sec.active{display:block}
+
+/* ── LAYOUT ── */
+.wrap{padding:40px 56px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+.four-col{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2px}
+
+/* ── SECTION HEADS ── */
+.sec-tag{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold2);margin-bottom:8px}
+.sec-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:#D0CCC4;line-height:1.2;margin-bottom:6px}
+.sec-sub{font-size:11px;color:var(--muted);font-style:italic;padding-bottom:16px;border-bottom:1px solid var(--rule2);margin-bottom:28px}
+.rule{height:1px;background:var(--rule2);margin:32px 0}
+h3{font-family:'IBM Plex Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#A0C4FF;margin-bottom:14px}
+
+/* ── KPI CARDS ── */
+.kpi-block{background:#111111;border:1px solid #2A2A2A;padding:20px}
+.kpi-block.navy{background:#0D1F3C;border-color:#1A3A6B}
+.kpi-block.green{background:#071F12;border-color:#0A4A28}
+.kv{font-family:'Playfair Display',serif;font-size:28px;color:#C8C4BC;line-height:1}
+.kv.gold{color:var(--gold2)} .kv.green{color:var(--green)} .kv.red{color:var(--red)} .kv.white{color:var(--gold2)}
+.kl{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.kl.white{color:rgba(255,255,255,.4)}
+.ks{font-size:10px;color:var(--muted);margin-top:4px}
+.ks.white{color:rgba(255,255,255,.25)}
+.kpi-up{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#2ACC7A;margin-top:3px}
+
+/* ── TABLES ── */
+table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:24px}
+thead tr{background:#0D0D0D;border-bottom:1px solid #333}
+th{padding:9px 12px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);font-weight:500}
+td{padding:9px 12px;border-bottom:1px solid #222;vertical-align:top;color:#C8C4BC}
+tr:nth-child(even) td{background:#0D0D0D}
+.num{font-family:'IBM Plex Mono',monospace;font-size:11px;text-align:right}
+.hl-g td{background:rgba(10,74,40,.12)!important} .hl-r td{background:rgba(122,20,20,.12)!important}
+.hl-n td{background:rgba(26,58,107,.12)!important}
+.td-g{color:#2ACC7A;font-weight:600} .td-r{color:#E05555} .td-n{color:#7AB0F0;font-weight:600}
+.td-c{color:#00B890;font-weight:600} .td-gold{color:var(--gold2);font-weight:600}
+.c1{background:rgba(122,20,20,.12)!important;font-family:'IBM Plex Mono',monospace;font-size:11px;text-align:center}
+.c2{background:rgba(196,154,44,.12)!important;font-family:'IBM Plex Mono',monospace;font-size:11px;text-align:center}
+.c3{background:rgba(15,35,64,.12)!important;font-family:'IBM Plex Mono',monospace;font-size:11px;text-align:center}
+.c4{background:rgba(10,74,40,.18)!important;font-family:'IBM Plex Mono',monospace;font-size:11px;text-align:center;font-weight:700}
+.rlbl{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:#A0C4FF}
+.sens-wrap{overflow-x:auto}
+
+/* ── CALLOUT ── */
+.callout{display:flex;margin:20px 0}
+.cb{width:3px;flex-shrink:0}
+.cb.gold{background:var(--gold2)} .cb.navy{background:var(--navy2)} .cb.green{background:var(--green)}
+.ct{padding:14px 18px;font-size:12px;line-height:1.7;font-style:italic}
+.ct.gold{background:rgba(196,154,44,.08)} .ct.navy{background:rgba(26,58,107,.1)} .ct.green{background:rgba(10,74,40,.1)}
+
+/* ── SCENARIO CONTROLS ── */
+.sc-btn{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:7px 16px;border:1px solid #333;background:#111;cursor:pointer;color:#888;transition:all .15s}
+.sc-btn.bear.on{background:#7A1414;color:white;border-color:#7A1414}
+.sc-btn.base.on{background:#1A2A3A;color:white;border-color:#2A4A6A}
+.sc-btn.bull.on{background:var(--green);color:white;border-color:var(--green)}
+.sc-btns{display:flex;gap:8px;margin-bottom:24px;align-items:center}
+.sc-btns span{font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:2px;margin-right:8px}
+
+/* ── RESULT BANNER ── */
+.res-banner{background:#0D0D0D;border:1px solid #2A2A2A;padding:28px 32px;margin-bottom:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.rb-item{padding:0 24px;border-right:1px solid rgba(255,255,255,.1)}
+.rb-item:first-child{padding-left:0}
+.rb-item:last-child{border-right:none}
+.rb-val{font-family:'Playfair Display',serif;font-size:32px;color:var(--gold2);line-height:1}
+.rb-lbl{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:5px}
+.rb-sub{font-size:10px;color:rgba(255,255,255,.25);margin-top:3px}
+
+/* ── SLIDERS ── */
+.params-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid #2A2A2A}
+.param-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:8px 14px;border-bottom:1px solid #2A2A2A;gap:12px}
+.param-row:last-child{border-bottom:none}
+.param-lbl{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:1px;color:#888;text-transform:uppercase}
+.param-val{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#A0C4FF;font-weight:700;min-width:40px;text-align:right}
+input[type=range]{width:80px;accent-color:#1A3A6B;height:3px}
+.params-head{padding:8px 14px;background:#0D0D0D;border-bottom:1px solid #2A2A2A;font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#888}
+
+/* ── CITY CARDS ── */
+.city-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2px}
+.city-card{padding:20px;background:#111111;border-top:3px solid #2A2A2A}
+.city-card.camb{border-top-color:var(--camb)}
+.city-card.oxford{border-top-color:var(--green)}
+.cc-val{font-family:'Playfair Display',serif;font-size:24px;color:#C8C4BC}
+.cc-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#888;margin-top:4px}
+
+/* ── SCENARIO COMPARISON ── */
+.sc-compare{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin-bottom:24px}
+.scc{padding:20px;background:#111111}
+.scc.bear{border-top:3px solid var(--red)}
+.scc.base{border-top:3px solid #1A3A6B;background:rgba(15,35,64,.15)}
+.scc.bull{border-top:3px solid var(--green)}
+.scc-label{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;margin-bottom:14px}
+.scc-label.bear{color:var(--red)} .scc-label.base{color:#5A8ACF} .scc-label.bull{color:var(--green2)}
+.scc-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #2A2A2A;font-size:11px}
+.scc-row:last-child{border-bottom:none}
+.scc-key{color:#888}
+.scc-val{font-family:'IBM Plex Mono',monospace;font-weight:700;color:#C8C4BC}
+
+/* ── CHART CONTAINERS ── */
+.chart-wrap{background:#111111;border:1px solid #2A2A2A;padding:20px;position:relative}
+.chart-title{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.chart-src{font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--muted);margin-top:10px}
+.chart-insight{font-size:11px;color:#B0ACA4;line-height:1.7;margin-top:10px;padding-top:10px;border-top:1px solid #2A2A2A}
+.chart-insight strong{color:#A0C4FF}
+
+/* ── BAR CHART ── */
+.bar-row-wrap{margin-bottom:8px;display:grid;grid-template-columns:160px 1fr 70px;gap:10px;align-items:center}
+.bar-lbl{font-size:11px;color:#C8C4BC;text-align:right}
+.bar-track{height:22px;background:#1A1A1A;position:relative;border:1px solid #2A2A2A}
+.bar-fill{height:100%;display:flex;align-items:center;padding-left:8px;transition:width .4s}
+.bar-fill span{font-family:'IBM Plex Mono',monospace;font-size:10px;color:white;font-weight:700;white-space:nowrap}
+.bar-num{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#C8C4BC}
+
+/* ── COMPANY TABLES ── */
+.sector-head{padding:10px 0;border-bottom:2px solid #2A4A7A;margin:32px 0 16px;display:flex;align-items:center;gap:10px}
+.sh-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:700}
+.sh-label.mobility{color:var(--camb)} .sh-label.smart{color:var(--gold2)} .sh-label.sensor{color:var(--navy2)} .sh-label.ip{color:var(--red)}
+
+/* ── IP BOX ── */
+.ip-framework{background:#0D0D0D;border:1px solid #2A2A2A;padding:24px;color:white}
+.ipf-head{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold2);margin-bottom:16px}
+.ipf-row{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:12px;color:rgba(255,255,255,.6);line-height:1.7}
+.ipf-row:last-child{border-bottom:none}
+.ipf-row strong{color:var(--gold2)}
+
+/* ── MARKET KPI STRIP ── */
+.mkt-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin:24px 0}
+.ms-item{background:#111111;border:1px solid #2A2A2A;padding:18px;border-top:2px solid #1A3A6B}
+.ms-item.g{border-top-color:var(--camb)}
+.ms-item.gold{border-top-color:var(--gold2)}
+.ms-item.red{border-top-color:var(--red)}
+.ms-val{font-family:'Playfair Display',serif;font-size:22px;color:#A0C4FF}
+.ms-val.g{color:var(--camb)} .ms-val.gold{color:var(--gold2)} .ms-val.red{color:var(--red)}
+.ms-lbl{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-top:5px}
+.ms-sub{font-size:10px;color:var(--muted);margin-top:3px}
+
+/* ── INVEST AMOUNT ── */
+.inv-row{display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap}
+.inv-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.inv-input-wrap{position:relative;display:flex;align-items:center}
+.inv-sym{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#A0C4FF;position:absolute;left:10px}
+input.inv-input{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:#A0C4FF;background:#111;border:1px solid #333;padding:7px 10px 7px 22px;width:180px}
+input.inv-input:focus{outline:none;border-color:#1A3A6B}
+
+/* ── FOOTER ── */
+.footer{background:#0D0D0D;border-top:1px solid #222;padding:20px 56px;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:1px;color:rgba(255,255,255,.25);flex-wrap:wrap;gap:8px}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ═══════════════════ MASTHEAD ═══════════════════ -->
+<div class="masthead">
+  <div class="masthead-top">
+    <div>
+      <div class="mh-firm">Zain Ventures · UK Fintech & AI Investment Thesis · Prepared by Maz Ismail, PhD · University of Cambridge</div>
+      <div class="mh-title">The UK is <em>Europe's #1</em><br>Fintech & AI Ecosystem</div>
+    </div>
+    <div class="mh-meta">
+      Prepared by: Maz Ismail<br>
+      Classification: Strictly Confidential<br>
+      Coverage: UK Golden Triangle<br>
+      Focus: Fintech · AI · Digital<br>
+      Date: June 2026<br>
+      For: Zain Ventures · Authorised Recipients Only
+    </div>
+  </div>
+  <div class="mh-abstract">
+    Proprietary analysis of the UK's 59,415-company technology corridor — London, Oxford and Cambridge — identifies Europe's deepest fintech and AI pipeline. The UK is the second-largest fintech market in the world after the United States and Europe's leading AI cluster, yet its best growth-stage companies remain under-served by domestic capital. This brief sets out the case for Zain Ventures to deploy into UK fintech and AI — both directly and as a fund LP — and the strategic rationale: how a UK position compounds Zain's digital-services strategy, plugs into its ~48-million-subscriber MENA base, and extends the venture playbook Zain has already proven with Pipe, Swvl, ZoodPay and Intelmatix.
+  </div>
+  <div class="mh-rule"></div>
+  <div class="mh-stats">
+    <div class="stat">
+      <div class="stat-val">$1.2T</div>
+      <div class="stat-lbl">UK Tech Ecosystem</div>
+      <div class="stat-sub">Europe's largest · 3rd globally after US & China</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">#1</div>
+      <div class="stat-lbl">European Fintech Hub</div>
+      <div class="stat-sub">London · UK 2nd worldwide after the US</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">27.7%</div>
+      <div class="stat-lbl">AI Market CAGR to 2030</div>
+      <div class="stat-sub">Fintech 16.0% CAGR · among Europe's fastest</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">59,415</div>
+      <div class="stat-lbl">Active Tech Companies</div>
+      <div class="stat-sub">Golden Triangle: London · Oxford · Cambridge</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">3.4×</div>
+      <div class="stat-lbl">Base-Case Net MOIC</div>
+      <div class="stat-sub">13.0% net IRR · ahead of BVCA 11% benchmark</div>
+    </div>
+  </div>
+  <div class="mh-class">Strictly Confidential &nbsp;·&nbsp; For Authorised Recipients Only &nbsp;·&nbsp; Not for Distribution &nbsp;·&nbsp; Investment Research</div>
+</div>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<div class="topnav">
+  <button class="tn-btn active" onclick="show('s1',this)">I. &nbsp;UK Fintech & AI Thesis</button>
+  <div class="tn-sep"></div>
+  <button class="tn-btn" onclick="show('s2',this)">II. &nbsp;Strategic Fit for Zain Ventures</button>
+  <div class="tn-sep"></div>
+  <button class="tn-btn" onclick="show('s3',this)">III. &nbsp;Return Scenario Model</button>
+</div>
+
+<!-- ═══════════════════ TAB 1: THESIS ═══════════════════ -->
+<div id="s1" class="sec active">
+<div class="wrap">
+
+  <div class="sec-tag">Section I, UK Fintech & AI Thesis & European Context</div>
+  <div class="sec-title">Europe’s Deepest Fintech & AI Pipeline. One Strategic Entry Point for Zain.</div>
+  <div class="sec-sub">59,415 active companies across the London–Oxford–Cambridge corridor · Europe’s #1 fintech hub and leading AI cluster · structural growth-stage funding gap · a pipeline directly aligned to Zain Ventures’ fintech and AI mandate</div>
+
+  <!-- CALLOUT -->
+  <div class="callout">
+    <div class="cb gold"></div>
+    <div class="ct gold">The United Kingdom is Europe's leading technology economy — a $1.2 trillion ecosystem, the world's second-largest fintech market after the United States, and the continent's deepest pool of AI and applied-data companies. Its centre of gravity is the Golden Triangle of London, Oxford and Cambridge: 59,415 active technology companies, 57.7% of them founded since 2020 — an unusually deep, early-stage pipeline available at compressed entry valuations. Yet the best UK companies are under-served by domestic capital at growth stage, leaving room for international strategic investors. Zain Ventures is positioned to enter this gap exactly where its mandate is strongest — fintech, payments, AI and digital services — and to do so the way it already operates: through direct co-investment and as an anchor LP in venture funds. For UK founders, Zain brings what a generalist fund cannot: distribution to ~48 million subscribers across seven MENA markets, telecom and fintech rails, and a proven route to regional scale.</div>
+  </div>
+
+  <!-- INVESTMENT THESIS PILLARS -->
+  <div class="four-col" style="margin:28px 0">
+    <div class="kpi-block" style="border-top:3px solid var(--camb)">
+      <div class="kv gold">59,415</div>
+      <div class="kl">Active UK Tech Companies</div>
+      <div class="ks">Golden Triangle corridor. London, Oxford and Cambridge.</div>
+      <div class="kpi-up">▲ 57.7% founded since 2020</div>
+    </div>
+    <div class="kpi-block" style="border-top:3px solid var(--navy)">
+      <div class="kv" style="color:#7AB0F0">57,058</div>
+      <div class="kl">London — Europe's #1 Fintech Hub</div>
+      <div class="ks">Active companies. London leads Europe; the UK ranks 2nd globally after the US.</div>
+      <div class="kpi-up">▲ Fintech sector growing 16.0% CAGR</div>
+    </div>
+    <div class="kpi-block" style="border-top:3px solid var(--gold2)">
+      <div class="kv green">27.7%</div>
+      <div class="kl">AI Market CAGR to 2030</div>
+      <div class="ks">UK among Europe's fastest-growing AI markets. The deepest applied-AI pipeline on the continent.</div>
+      <div class="kpi-up">▲ Zain has already backed AI (Intelmatix)</div>
+    </div>
+    <div class="kpi-block" style="border-top:3px solid var(--red)">
+      <div class="kv" style="color:var(--red)">9%</div>
+      <div class="kl">UK Domestic Growth Funding</div>
+      <div class="ks">Best UK companies are under-served by domestic capital at growth stage. The gap is the entry point.</div>
+      <div class="kpi-up">▲ Opening for strategic foreign capital</div>
+    </div>
+  </div>
+
+  
+
+  <!-- DATA NOTE -->
+  <div class="callout">
+    <div class="cb navy"></div>
+    <div class="ct navy"><strong>Why Zain Ventures is a differentiated investor:</strong> Zain Group is a leading MENA telecom operator — approximately 48 million subscribers across seven markets (Kuwait, Saudi Arabia, Iraq, Jordan, Bahrain, Sudan and South Sudan), ~$5.3bn revenue, and a five-year “4WARD” strategy to become a full digital-services TechCo with fintech and AI at its core. Zain Ventures is its corporate venture arm, with a proven playbook in exactly these sectors: Pipe (US fintech), Swvl (mobility, Nasdaq-listed), ZoodPay (BNPL) and Intelmatix (AI) — plus anchor LP positions in venture funds including MEVP, Wamda and Colle Capital. For UK fintech and AI companies, Zain is not a passive financial backer: it offers a route to ~48 million subscribers, telecom billing and mobile-money rails, and regional expansion across the Gulf and MENA. The thesis is financial and strategic simultaneously.</div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- EUROPEAN COMPARISON -->
+  <h3>The UK Golden Triangle vs. Select European Technology Clusters, 2025</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cluster</th>
+        <th>DeepTech Funding 2024</th>
+        <th>University Spinout Rank</th>
+        <th>Tech Density</th>
+        <th>Scale-up Maturity</th>
+        <th>Growth Capital Gap</th>
+        <th>Strategic Fit (Zain)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="hl-g">
+        <td class="td-c">🇬🇧 Cambridge</td>
+        <td class="num td-g">£879m spinouts alone</td>
+        <td class="td-g">#1 in Europe</td>
+        <td class="td-g">50.9/10k, European #1</td>
+        <td class="td-g">26.3%, UK #1</td>
+        <td class="td-g">9% domestic share, structural gap</td>
+        <td class="td-c">Primary target — fintech + AI depth</td>
+      </tr>
+      <tr>
+        <td class="td-n">🇨🇭 Zurich (ETH/EPFL)</td>
+        <td class="num">$1.9bn total</td>
+        <td>#3 ETH · #4 EPFL</td>
+        <td>High, smaller ecosystem</td>
+        <td>Strong early stage</td>
+        <td>Limited, well-capitalised</td>
+        <td class="td-gold">Strong but expensive; no access gap</td>
+      </tr>
+      <tr>
+        <td>🇫🇷 Paris</td>
+        <td class="num">$3.0bn</td>
+        <td>Top 10</td>
+        <td>Moderate, large city dilutes</td>
+        <td>Moderate</td>
+        <td>Partially, late stage focus</td>
+        <td>Late-stage powerhouse; regulatory friction</td>
+      </tr>
+      <tr>
+        <td>🇩🇪 Berlin</td>
+        <td class="num">~$2.4bn</td>
+        <td>Below top 5</td>
+        <td>High velocity</td>
+        <td>Lower, earlier stage</td>
+        <td>Moderate</td>
+        <td>High volume; lower deep-tech concentration</td>
+      </tr>
+      <tr>
+        <td>🇸🇪 Stockholm</td>
+        <td class="num">$2.4bn</td>
+        <td>Notable, KTH</td>
+        <td>High unicorn rate</td>
+        <td>Strong exits</td>
+        <td>Limited</td>
+        <td>Consumer-led; less fintech/AI depth</td>
+      </tr>
+      <tr>
+        <td>🇩🇪 Munich</td>
+        <td class="num">$4.9bn (2018, 23)</td>
+        <td>TU Munich #5</td>
+        <td>Moderate</td>
+        <td>Moderate</td>
+        <td>Moderate</td>
+        <td>Corporate-dominated; harder access</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="chart-src">Source: Dealroom European Deep Tech Report 2025 · European Spinout Report 2025 · Cambridge Enterprise Annual Review 2025</div>
+
+  <!-- FUNDING BAR CHART -->
+  <div class="rule"></div>
+  <div class="three-col" style="align-items:start">
+    <div>
+      <h3>Deep-Tech Funding Raised, Cambridge+Oxford vs Peers ($bn, 2018 to 2023)</h3>
+      <div style="margin-bottom:10px">
+        <div class="bar-row-wrap">
+          <div class="bar-lbl" style="font-weight:700;color:var(--camb)">Cambridge + Oxford</div>
+          <div class="bar-track"><div class="bar-fill" style="background:var(--camb);width:69%"><span>$9.0bn</span></div></div>
+          <div class="bar-num" style="color:var(--camb);font-weight:700">#1 non-capital</div>
+        </div>
+        <div class="bar-row-wrap">
+          <div class="bar-lbl">London</div>
+          <div class="bar-track"><div class="bar-fill" style="background:var(--navy);width:98%"><span>$12.8bn</span></div></div>
+          <div class="bar-num">Capital city</div>
+        </div>
+        <div class="bar-row-wrap">
+          <div class="bar-lbl">Stockholm</div>
+          <div class="bar-track"><div class="bar-fill" style="background:var(--navy2);width:80%"><span>$10.3bn</span></div></div>
+          <div class="bar-num">Megarounds</div>
+        </div>
+        <div class="bar-row-wrap">
+          <div class="bar-lbl">Paris</div>
+          <div class="bar-track"><div class="bar-fill" style="background:#4A7AAA;width:60%"><span>$7.7bn</span></div></div>
+          <div class="bar-num">Late stage</div>
+        </div>
+        <div class="bar-row-wrap">
+          <div class="bar-lbl">Munich</div>
+          <div class="bar-track"><div class="bar-fill" style="background:#7A7468;width:39%"><span>$4.9bn</span></div></div>
+          <div class="bar-num">Industrial</div>
+        </div>
+        <div class="bar-row-wrap">
+          <div class="bar-lbl">Zurich (CH total)</div>
+          <div class="bar-track"><div class="bar-fill" style="background:#9A9690;width:27%"><span>~$3.4bn</span></div></div>
+          <div class="bar-num">Per capita #1</div>
+        </div>
+      </div>
+      <div class="chart-src">Source: Dealroom and Walden Catalyst, European Deep Tech Report 2023</div>
+    </div>
+    <div>
+      <h3>Cambridge Pipeline Stage Distribution</h3>
+      <div class="chart-wrap">
+        <canvas id="stageChart" height="220"></canvas>
+      <div class="chart-insight"><strong>Key takeaway:</strong> The 222 early scale-ups and 131 established companies are the primary target for growth-stage capital. The majority remain at startup stage — representing a deep, underpenetrated pipeline.</div>
+      </div>
+    </div>
+    <div>
+      <h3>Cambridge AI and DeepTech Company Formation (2015 to 2025)</h3>
+      <div class="chart-wrap">
+        <canvas id="formChart" height="220"></canvas>
+      <div class="chart-insight"><strong>Key takeaway:</strong> Peak formation in 2021 to 2022 is now producing companies approaching Series A and B readiness in 2025 to 2027 — the primary deployment window for Zain Ventures.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THREE PILLARS -->
+  <div class="rule"></div>
+  <h3>Why the UK Golden Triangle Leads, Three Structural Advantages</h3>
+  <div class="three-col" style="margin-top:16px">
+    <div class="kpi-block" style="border-top:3px solid var(--camb)">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--camb);margin-bottom:10px">01 · IP-Rich Companies</div>
+      <p style="font-size:12px;line-height:1.7;color:var(--ink2)">Cambridge and Oxford jointly hold the leading position in Europe for deep-tech and life sciences spinout value creation, ranking ahead of ETH Zurich, EPFL and TU Munich on a composite value basis. Cambridge recorded the strongest year-on-year spinout growth among the UK's top three universities in 2024, producing 26 new companies. Aggregate spinout investment increased from £46 million in 2015 to £879 million in 2024, representing a compound growth rate that significantly outpaces the broader UK venture market.</p>
+      <div class="chart-src" style="margin-top:8px">Source: Source: Dealroom European Spinout Report 2025 · Cambridge Enterprise 2025</div>
+    </div>
+    <div class="kpi-block" style="border-top:3px solid var(--gold2)">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold2);margin-bottom:10px">02 · Capital Efficiency</div>
+      <p style="font-size:12px;line-height:1.7;color:var(--ink2)">Cambridge portfolio companies raised £1.6 million in equity per company in 2024, an increase of 385% since 2015 and the strongest per-company growth of any UK region. At growth stage, the average raise of £42.8 million per company exceeds all other UK regions. Within life sciences specifically, Cambridge attracts £2.49 million per company, more than double the Oxfordshire figure and 2.5 times the Greater London equivalent.</p>
+      <div class="chart-src" style="margin-top:8px">Source: Cambridge Enterprise Annual Review 2025</div>
+    </div>
+    <div class="kpi-block" style="border-top:3px solid var(--navy)">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--navy);margin-bottom:10px">03 · Access &amp; Relationships</div>
+      <p style="font-size:12px;line-height:1.7;color:var(--ink2)">At 50.9 technology companies per 10,000 population, Cambridge maintains the highest technology company density of any European city. The ecosystem has expanded 80% over the past decade, growing from 473 active companies in 2015 to 1,151 in 2025. With 49% of companies concentrated in AI, DeepTech or Biotech, the city exhibits a structural sectoral focus that is the product of decades of compounding academic and commercial investment. This density cannot be replicated through policy intervention.</p>
+      <div class="chart-src" style="margin-top:8px">Source: First-hand ecosystem data · Cambridge Enterprise 2025</div>
+    </div>
+  </div>
+
+  <!-- CLOSING CALLOUT -->
+  <div class="callout" style="margin-top:28px">
+    <div class="cb green"></div>
+    <div class="ct green"><strong>The investment thesis in one paragraph:</strong> The UK is Europe's deepest fintech and AI ecosystem and the world's #2 fintech market after the US. Its founders are building in payments, lending, wealth, AI and enterprise software — exactly the verticals where Zain Ventures already invests and where Zain's telecom and fintech rails create real commercial synergy. The domestic growth-funding gap leaves room for strategic foreign capital. Zain can enter from a position of genuine differentiation: ~48 million MENA subscribers, distribution and payment rails, and a proven CVC track record. The financial return case is strong on its own. The strategic case — UK innovation scaled across Zain's markets — makes it exceptional.
+  <div class="rule"></div>
+
+  <h3>Cambridge Ecosystem Performance Indicators, 2015 to 2025</h3>
+  <div class="three-col" style="margin-top:16px">
+    <div class="chart-wrap">
+      <div class="chart-title">Spinout Investment (£m) · Cambridge Enterprise</div>
+      <canvas id="spinoutChart" height="200"></canvas>
+      <div class="chart-src">Source: Cambridge Enterprise Annual Review 2025</div>
+      <div class="chart-insight"><strong>Key takeaway:</strong> Spinout investment has compounded at an exceptional rate, growing from £46m in 2015 to £879m in 2024. Cambridge University is now among the most commercially productive research institutions globally on an investment-per-spinout basis.</div>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-title">Ecosystem Sector Composition · 1,151 Active Companies</div>
+      <canvas id="sectorMixChart" height="200"></canvas>
+      <div class="chart-src">Source: First-hand proprietary ecosystem dataset</div>
+      <div class="chart-insight"><strong>Key takeaway:</strong> AI and Software, DeepTech and FinTech together dominate the UK pipeline. This concentration in software-led, IP-rich, capital-efficient sectors is precisely where Zain Ventures invests — and where Zain's telecom and fintech rails create commercial synergy.</div>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-title">Technology Density · Companies per 10,000 Population</div>
+      <canvas id="densityChart" height="200"></canvas>
+      <div class="chart-src">Source: First-hand data · Cambridge Enterprise 2025</div>
+      <div class="chart-insight"><strong>Key takeaway:</strong> At 50.9 companies per 10,000 population, Cambridge's technology density is more than double London and ahead of every comparable European city. Density at this level creates self-reinforcing network effects that cannot be replicated through policy intervention.</div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <h3>The Structural Funding Gap: UK Domestic Capital Share vs. Total Ecosystem Investment</h3>
+  <div class="two-col" style="margin-top:16px;align-items:start">
+    <div>
+      <div class="chart-wrap">
+        <div class="chart-title">UK Domestic Share of Late-Stage Cambridge Funding (%) · 2015 to 2025</div>
+        <canvas id="fundingGapChart" height="240"></canvas>
+        <div class="chart-src">Source: Beauhurst · Cambridge Enterprise · BVCA 2024</div>
+      <div class="chart-insight"><strong>Key takeaway:</strong> Total ecosystem investment has grown 17x since 2015, yet the UK domestic funding share has fallen from 38% to 9%. This divergence is the central investment opportunity: world-class companies are systematically underserved by domestic capital at growth stage, creating a structural entry advantage for international institutional investors.</div>
+      </div>
+    </div>
+    <div>
+      <div class="chart-wrap" style="margin-bottom:16px">
+        <div class="chart-title">Cumulative Cambridge AI and Software Company Formations · 2015 to 2025</div>
+        <canvas id="aiFormationChart" height="200"></canvas>
+        <div class="chart-src">Source: Proprietary first-hand classification methodology</div>
+      <div class="chart-insight"><strong>Key takeaway:</strong> The cumulative stock of Cambridge AI and DeepTech companies has grown continuously. Companies formed in 2019 to 2022 are now reaching commercial maturity, representing the primary vintage for Series A and B deployment over the next 24 to 36 months.</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px">
+        <div class="ms-item"><div class="ms-val">£1.6m</div><div class="ms-lbl">Avg equity raised per company 2024</div><div class="ms-sub">385% increase since 2015. UK number one growth rate.</div></div>
+        <div class="ms-item red"><div class="ms-val red">9%</div><div class="ms-lbl">UK domestic funding share</div><div class="ms-sub">Historic low. Structural capital gap at Series A and B.</div></div>
+        <div class="ms-item g"><div class="ms-val g">96.3%</div><div class="ms-lbl">5-year company survival rate</div><div class="ms-sub">Above-market portfolio quality indicator.</div></div>
+        <div class="ms-item gold"><div class="ms-val gold">699%</div><div class="ms-lbl">Total investment growth</div><div class="ms-sub">From £46m in 2015 to £879m in 2024.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════ TAB 2: ZAIN STRATEGIC FIT ═══════════════════ -->
+<div id="s2" class="sec">
+<div class="wrap">
+
+  <div class="sec-tag">Section II, Strategic Fit</div>
+  <div class="sec-title">UK Fintech & AI, Mapped to Zain's Digital Strategy</div>
+  <div class="sec-sub">A capability-level assessment of the UK pipeline against Zain Ventures' mandate — fintech and payments, applied AI and data, and enterprise and digital infrastructure — and the strategic value Zain delivers beyond capital</div>
+
+  <div class="callout">
+    <div class="cb gold"></div>
+    <div class="ct gold"><strong>The investment mandate:</strong> Zain Ventures backs growth-stage fintech and technology companies globally and anchors venture funds, having deployed into Pipe, Swvl, ZoodPay and Intelmatix and committed as an LP to MEVP, Wamda and Colle Capital. The UK is the deepest source of fintech and AI innovation outside the United States. Zain is not a passive financial investor: it brings ~48 million MENA subscribers, telecom billing and mobile-money rails, and a regional distribution network that creates direct commercial value for portfolio companies. This section maps the UK pipeline against Zain's mandate and sets out the strategic value Zain delivers beyond capital — through the two routes already proven in its playbook: direct co-investment and an anchor LP position in a fund.</div>
+  </div>
+
+  <div class="mkt-strip">
+    <div class="ms-item g">
+      <div class="ms-val g">~48m</div>
+      <div class="ms-lbl">Zain MENA Subscribers</div>
+      <div class="ms-sub">Distribution for portfolio companies across seven markets.</div>
+    </div>
+    <div class="ms-item gold">
+      <div class="ms-val gold">7</div>
+      <div class="ms-lbl">MENA Markets</div>
+      <div class="ms-sub">Kuwait, Saudi Arabia, Iraq, Jordan, Bahrain, Sudan, South Sudan.</div>
+    </div>
+    <div class="ms-item">
+      <div class="ms-val">$5.3bn</div>
+      <div class="ms-lbl">Zain Group Revenue</div>
+      <div class="ms-sub">A scaled, well-capitalised strategic partner and co-investor.</div>
+    </div>
+    <div class="ms-item red">
+      <div class="ms-val red">4WARD</div>
+      <div class="ms-lbl">Digital Strategy</div>
+      <div class="ms-sub">TechCo transformation with fintech and AI at the core.</div>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin:24px 0;align-items:start">
+    <div class="chart-wrap">
+      <div class="chart-title">Zain-Relevant Market Size (US$bn) · 2024 to 2030E</div>
+      <canvas id="mktSizeChart" height="230"></canvas>
+      <div class="chart-src">Source: MarketsandMarkets · Mordor Intelligence · Grand View Research · indicative</div>
+      <div class="chart-insight"><strong>Key takeaway:</strong> Every vertical in the UK pipeline that fits Zain's mandate — digital payments, applied AI, cybersecurity, cloud and data infrastructure — addresses a market scaling past $50bn by 2030. Payments and AI, where Zain's telecom assets create the most synergy, are the largest near-term opportunities.</div>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-title">UK Pipeline Depth vs Zain's Strategic Priorities</div>
+      <canvas id="elmAlignChart" height="230"></canvas>
+      <div class="chart-src">Source: UK Golden Triangle dataset · Zain Ventures mandate analysis · June 2026</div>
+      <div class="chart-insight"><strong>Key takeaway:</strong> UK pipeline depth aligns closely to Zain's stated priorities across every assessed dimension. The strongest matches are in fintech, digital payments and applied AI — precisely where Zain has already invested and where its rails create the clearest commercial advantage.</div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="sector-head">
+    <span style="font-size:18px">💳</span>
+    <span class="sh-label smart">Fintech & Digital Payments</span>
+  </div>
+  <div class="callout" style="margin-bottom:20px">
+    <div class="cb gold"></div>
+    <div class="ct gold">Fintech is the centre of gravity for both the UK ecosystem and Zain's venture strategy. London is Europe's #1 fintech hub and the UK the world's #2 market after the US; Zain Ventures' portfolio already includes Pipe and ZoodPay. UK companies building in payments, lending, embedded finance and wealth operate in exactly the domain where Zain's telecom billing relationships, mobile-money infrastructure and ~48m subscribers create a bilateral value exchange: the portfolio company gains MENA distribution; Zain accelerates its own fintech transformation.</div>
+  </div>
+  <table>
+    <thead><tr><th>Category</th><th>UK Pipeline Depth</th><th>Market Opportunity</th><th>Strategic Value Zain Adds</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="td-c" style="font-weight:700">Payments & Embedded Finance</td>
+        <td>London is the global capital of payments innovation, with Europe's deepest concentration of payment-infrastructure and embedded-finance companies at Series A to C stage.</td>
+        <td>$2.5tn+ global digital-payments flows; embedded finance growing over 20% a year. MENA digital payments are among the fastest-growing globally as cash gives way to mobile.</td>
+        <td class="td-c">Zain runs billing and mobile-money relationships across seven markets. Portfolio companies gain an immediate MENA distribution and rails partner; Zain gains best-in-class payment technology.</td>
+      </tr>
+      <tr>
+        <td class="td-c" style="font-weight:700">Lending, BNPL & Credit</td>
+        <td>UK lending and BNPL companies lead Europe in alternative-data underwriting and SME finance. Zain has already backed this category directly via ZoodPay.</td>
+        <td>MENA consumer and SME credit is structurally under-penetrated. BNPL and digital lending are among the highest-growth fintech sub-sectors in the Gulf.</td>
+        <td class="td-c">Zain's subscriber base and telecom relationships provide a distribution advantage for credit products expanding into MENA.</td>
+      </tr>
+      <tr>
+        <td class="td-c" style="font-weight:700">WealthTech & RegTech</td>
+        <td>The UK leads Europe in wealth, savings and regulatory-technology platforms, supported by London's depth in financial services and a mature FCA sandbox regime.</td>
+        <td>Gulf wealth and digital-savings demand is rising sharply with young, digitally-native populations and financial-inclusion agendas.</td>
+        <td class="td-c">Zain provides a trusted consumer brand and distribution channel for digital wealth and savings products entering its markets.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sector-head">
+    <span style="font-size:18px">🤖</span>
+    <span class="sh-label mobility">Applied AI & Data</span>
+  </div>
+  <div class="callout" style="margin-bottom:20px">
+    <div class="cb navy"></div>
+    <div class="ct navy">The UK is Europe's leading applied-AI cluster, anchored by Cambridge and Oxford and concentrated in London. Zain has already invested in AI (Intelmatix) and is embedding AI across its network and customer operations under the 4WARD strategy. UK AI companies building in customer intelligence, network optimisation, fraud and generative-AI tooling are solving exactly the problems a modern telecom faces at scale — making Zain both an investor and a first reference customer.</div>
+  </div>
+  <table>
+    <thead><tr><th>Category</th><th>UK Pipeline Depth</th><th>Market Opportunity</th><th>Strategic Value Zain Adds</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="td-c" style="font-weight:700">Customer & Network AI</td>
+        <td>Deep UK pipeline in AI for customer analytics, churn, personalisation and network optimisation — areas with direct telecom application.</td>
+        <td>Telecom AI and AIOps is a multi-billion-dollar, fast-growing market as operators automate networks and customer operations.</td>
+        <td class="td-c">Zain is a ready reference deployment across seven networks and ~48m customers — a proving ground few investors can offer an AI company.</td>
+      </tr>
+      <tr>
+        <td class="td-c" style="font-weight:700">Fraud, Risk & Identity AI</td>
+        <td>The UK leads Europe in fraud-detection, KYC and digital-identity AI, built on London's fintech and cyber depth.</td>
+        <td>Fraud and identity infrastructure is a prerequisite for every fintech and digital-payments rollout in MENA.</td>
+        <td class="td-c">Directly applicable to Zain's fintech ambitions and subscriber onboarding; a natural co-deployment with Zain's payment initiatives.</td>
+      </tr>
+      <tr>
+        <td class="td-c" style="font-weight:700">Generative AI & Enterprise Tooling</td>
+        <td>London and Cambridge host a dense generative-AI and enterprise-tooling pipeline, from infrastructure to vertical applications.</td>
+        <td>Enterprise generative AI is among the fastest-scaling software categories globally, with strong Gulf enterprise and government demand.</td>
+        <td class="td-c">Zain's enterprise and government relationships across MENA provide a commercial channel for UK enterprise-AI companies seeking regional scale.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sector-head">
+    <span style="font-size:18px">🛡️</span>
+    <span class="sh-label sensor">Enterprise, Cloud & Cybersecurity</span>
+  </div>
+  <div class="callout" style="margin-bottom:20px">
+    <div class="cb navy"></div>
+    <div class="ct navy">Beyond consumer fintech and AI, the UK has a deep enterprise-software, cloud and cybersecurity pipeline that maps onto Zain's B2B and digital-infrastructure businesses. As Zain expands its enterprise and managed-services offering across MENA, UK enterprise-SaaS, cloud and security companies are natural portfolio and partnership candidates — patient, IP-rich and revenue-generating.</div>
+  </div>
+  <table>
+    <thead><tr><th>Category</th><th>UK Pipeline Depth</th><th>Market Opportunity</th><th>Strategic Value Zain Adds</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="td-c" style="font-weight:700">Cybersecurity</td>
+        <td>The UK is Europe's largest cybersecurity ecosystem, with strong academic pipelines from Oxford, Cambridge and London.</td>
+        <td>MENA cybersecurity spend is rising rapidly with digital transformation and regulation. Telecoms are primary buyers and channels.</td>
+        <td class="td-c">Zain is both a buyer and a regional distribution channel for enterprise security products entering the Gulf.</td>
+      </tr>
+      <tr>
+        <td class="td-c" style="font-weight:700">Cloud & Data Infrastructure</td>
+        <td>Deep UK pipeline in cloud, data and developer infrastructure — capital-efficient, recurring-revenue businesses.</td>
+        <td>MENA cloud adoption is accelerating; data-localisation rules create demand for regional infrastructure partners.</td>
+        <td class="td-c">Zain's data-centre and connectivity assets make it a credible regional deployment and go-to-market partner.</td>
+      </tr>
+      <tr>
+        <td class="td-c" style="font-weight:700">Enterprise SaaS & Vertical Software</td>
+        <td>Mature UK enterprise-SaaS pipeline across finance, logistics and government verticals.</td>
+        <td>Gulf enterprises and governments are digitising rapidly under national transformation agendas.</td>
+        <td class="td-c">Zain's enterprise and government relationships provide a direct channel for UK B2B software into MENA.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sector-head">
+    <span style="font-size:18px">⚖️</span>
+    <span class="sh-label ip">Why Zain Ventures — The Strategic Investor Advantage</span>
+  </div>
+
+  <div class="two-col" style="align-items:start">
+    <div>
+      <p style="font-size:12px;line-height:1.8;color:var(--ink2);margin-bottom:14px">For UK founders, the choice of investor at growth stage matters as much as the quantum of capital. The investors who create the most value bring market access, customer relationships and rails the founder cannot build alone. Zain Ventures offers something few European funds can: distribution to ~48 million subscribers across seven MENA markets, telecom billing and mobile-money infrastructure, and a regional expansion path into one of the fastest-growing digital economies in the world. A UK fintech or AI company building world-class technology gains, through a Zain relationship, an immediate route to scale beyond Europe.</p>
+      <p style="font-size:12px;line-height:1.8;color:var(--ink2);margin-bottom:14px">Zain Ventures is structured to operate exactly this way — strategic, patient and commercially active. It invests directly when it wants a strategic position, and commits as an anchor LP into venture funds (MEVP, Wamda, Colle Capital) when it wants diversified exposure. That flexibility lets Zain access UK fintech and AI through whichever route best fits the opportunity, without having to run every deal in-house.</p>
+      <p style="font-size:12px;line-height:1.8;color:var(--ink2)">Zain's 4WARD strategy makes fintech and AI core to the group's future, not a peripheral bet. UK companies at the frontier of payments, lending, applied AI and enterprise software have a natural strategic home with Zain: capital from a scaled regional operator, plus a genuine commercial channel into the Gulf and wider MENA. The combination of UK pipeline quality, Zain's distribution capability and the domestic growth-funding gap creates a high-conviction thesis with both financial and strategic return dimensions.</p>
+      <div class="callout" style="margin-top:16px">
+        <div class="cb green"></div>
+        <div class="ct green" style="font-size:11px"><strong>Established track record:</strong> Zain Ventures has already executed this model — Pipe (US fintech), Swvl (the first $1bn+ MENA unicorn to list on Nasdaq), ZoodPay (BNPL) and Intelmatix (AI), alongside anchor LP commitments to MEVP, Wamda and Colle Capital. Zain's strategy explicitly targets fintech and technology investment that accelerates its digital transformation. The UK is the highest-conviction destination for that capital, and both routes — direct co-investment and an LP/fund position — are available now.</div>
+      </div>
+    </div>
+    <div class="ip-framework">
+      <div class="ipf-head">What Zain Ventures Brings to UK Portfolio Companies</div>
+      <div class="ipf-row"><strong>MENA Market Access</strong><br>Portfolio companies gain a route to ~48 million subscribers across seven markets — Kuwait, Saudi Arabia, Iraq, Jordan, Bahrain, Sudan and South Sudan — one of the fastest-growing digital economies in the world.</div>
+      <div class="ipf-row"><strong>Telecom Distribution & Fintech Rails</strong><br>Zain's billing relationships, mobile-money infrastructure and trusted consumer brand give fintech and digital companies an immediate distribution and payments channel into the Gulf.</div>
+      <div class="ipf-row"><strong>Strategic Capital, Two Routes</strong><br>Zain invests directly for strategic positions and as an anchor LP into venture funds (MEVP, Wamda, Colle Capital) — flexible capital matched to the opportunity, from a scaled operator.</div>
+      <div class="ipf-row"><strong>Proven CVC Playbook</strong><br>Pipe, Swvl, ZoodPay and Intelmatix demonstrate a real, repeatable model. Zain is a strategic investor that understands fintech and AI — not a financial backer relying on market reports.</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════ TAB 3: RETURN MODEL ═══════════════════ -->
+<div id="s3" class="sec">
+<div class="wrap">
+
+  <div class="sec-tag">Section III, Return Scenario Model</div>
+  <div class="sec-title">Expected Return Analysis, UK Growth-Stage Tech Portfolio</div>
+  <div class="sec-sub">Fully parametric scenario analysis calibrated to the UK Golden Triangle pipeline's sector mix and survival rates · benchmarked against BVCA 2024 UK VC performance data · all parameters are adjustable in real time</div>
+
+  <!-- SCENARIO SELECTOR + AMOUNT -->
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:24px">
+    <div class="sc-btns">
+      <span>Scenario:</span>
+      <button class="sc-btn bear" onclick="setSc('bear')">Bear Case</button>
+      <button class="sc-btn base on" onclick="setSc('base')">Base Case</button>
+      <button class="sc-btn bull" onclick="setSc('bull')">Bull Case</button>
+    </div>
+    <div class="inv-row" style="margin:0">
+      <span class="inv-label">Investment Amount</span>
+      <div class="inv-input-wrap">
+        <span class="inv-sym">£</span>
+        <input class="inv-input" id="investAmt" type="number" value="10000000" step="1000000" oninput="upd()">
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULT BANNER -->
+  <div class="res-banner">
+    <div class="rb-item">
+      <div class="rb-val" id="r-gm">, </div>
+      <div class="rb-lbl">Gross MOIC</div>
+      <div class="rb-sub" id="r-gm-sub">Gross portfolio value</div>
+    </div>
+    <div class="rb-item">
+      <div class="rb-val" id="r-nm">, </div>
+      <div class="rb-lbl">Net MOIC</div>
+      <div class="rb-sub">After 2% management fee and 20% carried interest</div>
+    </div>
+    <div class="rb-item">
+      <div class="rb-val" id="r-irr">, </div>
+      <div class="rb-lbl">Net IRR (annualised)</div>
+      <div class="rb-sub">BVCA 2024 median benchmark: 11.0% per annum</div>
+    </div>
+    <div class="rb-item">
+      <div class="rb-val" id="r-dpi">, </div>
+      <div class="rb-lbl">DPI, Realised Cash</div>
+      <div class="rb-sub" id="r-tot-sub">Distributed to paid-in capital ratio</div>
+    </div>
+  </div>
+
+  <!-- PARAMS + TABLE -->
+  <div class="two-col" style="align-items:start;margin-bottom:28px">
+    <!-- PARAMETERS -->
+    <div>
+      <h3 style="margin-bottom:12px">Fund Mechanics</h3>
+      <div class="params-grid">
+        <div class="params-head" style="grid-column:1/-1">Fund Structure</div>
+        <div class="param-row">
+          <span class="param-lbl">Fund Life</span>
+          <input type="range" id="s-life" min="7" max="15" step="1" value="10" oninput="upd()">
+          <span class="param-val" id="v-life">10 yrs</span>
+        </div>
+        <div class="param-row">
+          <span class="param-lbl">Mgmt Fee</span>
+          <input type="range" id="s-fee" min="1" max="3" step=".5" value="2" oninput="upd()">
+          <span class="param-val" id="v-fee">2%</span>
+        </div>
+        <div class="param-row">
+          <span class="param-lbl">Carried Interest</span>
+          <input type="range" id="s-carry" min="10" max="30" step="5" value="20" oninput="upd()">
+          <span class="param-val" id="v-carry">20%</span>
+        </div>
+        <div class="param-row">
+          <span class="param-lbl">Follow-on Reserve</span>
+          <input type="range" id="s-res" min="20" max="40" step="5" value="30" oninput="upd()">
+          <span class="param-val" id="v-res">30%</span>
+        </div>
+        <div class="param-row">
+          <span class="param-lbl">Portfolio Cos</span>
+          <input type="range" id="s-cos" min="10" max="30" step="1" value="20" oninput="upd()">
+          <span class="param-val" id="v-cos">20</span>
+        </div>
+        <div class="param-row" style="grid-column:1/-1;opacity:.5">
+          <span class="param-lbl">Seed / Early Stage</span>
+          <input type="range" id="s-seed" min="30" max="70" step="5" value="50" oninput="upd()" disabled>
+          <span class="param-val" id="v-seed">50%</span>
+        </div>
+        <div class="params-head" style="grid-column:1/-1">Return Assumptions</div>
+        <div class="param-row">
+          <span class="param-lbl">Write-off Rate</span>
+          <input type="range" id="s-fail" min="20" max="65" step="5" value="40" oninput="upd()">
+          <span class="param-val" id="v-fail">40%</span>
+        </div>
+        <div class="param-row">
+          <span class="param-lbl">Zombie Rate</span>
+          <input type="range" id="s-zmb" min="15" max="45" step="5" value="35" oninput="upd()">
+          <span class="param-val" id="v-zmb">35%</span>
+        </div>
+        <div class="param-row">
+          <span class="param-lbl">Mid-range Rate</span>
+          <input type="range" id="s-mid" min="5" max="30" step="5" value="15" oninput="upd()">
+          <span class="param-val" id="v-mid">15%</span>
+        </div>
+        <div class="param-row">
+          <span class="param-lbl">Winner Rate</span>
+          <input type="range" id="s-win" min="3" max="25" step="1" value="10" oninput="upd()">
+          <span class="param-val" id="v-win">10%</span>
+        </div>
+        <div class="param-row">
+          <span class="param-lbl">Winner MOIC</span>
+          <input type="range" id="s-wm" min="15" max="50" step="5" value="25" oninput="upd()">
+          <span class="param-val" id="v-wm">25×</span>
+        </div>
+        <div class="param-row">
+          <span class="param-lbl">Zombie MOIC</span>
+          <input type="range" id="s-zmx" min="1.0" max="2.0" step=".1" value="1.3" oninput="upd()">
+          <span class="param-val" id="v-zmx">1.3×</span>
+        </div>
+        <div class="param-row">
+          <span class="param-lbl">Mid-range MOIC</span>
+          <input type="range" id="s-midx" min="4" max="12" step="1" value="7" oninput="upd()">
+          <span class="param-val" id="v-midx">7×</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- POWER LAW TABLE -->
+    <div>
+      <h3>Power Law Portfolio Distribution</h3>
+      <p style="font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.7">Venture capital return distributions follow a power law structure in which a concentrated subset of portfolio companies generate the substantial majority of aggregate fund returns. The Cambridge +12% city adjustment is applied to reflect the ecosystem's demonstrated biotech seed IRR benchmark of 29.8% and the historical exit performance of Cambridge deep-tech companies at scale.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Outcome Bucket</th>
+            <th style="text-align:right">Cos</th>
+            <th style="text-align:right">Avg MOIC</th>
+            <th style="text-align:right">Capital</th>
+            <th style="text-align:right">Value</th>
+            <th style="text-align:right">% Return</th>
+            <th>Distribution</th>
+          </tr>
+        </thead>
+        <tbody id="pwBody"></tbody>
+      </table>
+
+      <!-- CITY COMPARISON -->
+      <h3 style="margin-top:24px">City-Adjusted Return, Cambridge Premium</h3>
+      <div class="city-grid">
+        <div class="city-card camb">
+          <div class="cc-val" id="c-cam-m">, </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--camb);letter-spacing:2px;text-transform:uppercase;margin-top:4px">Cambridge · +12% premium</div>
+          <div class="cc-sub" id="c-cam-i">,  net IRR</div>
+          <div style="font-size:10px;color:var(--muted);margin-top:6px">Deep-tech and biotech concentration premium. Seed IRR benchmark 29.8% (PitchBook 2024).</div>
+        </div>
+        <div class="city-card oxford">
+          <div class="cc-val" id="c-ox-m">, </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--green);letter-spacing:2px;text-transform:uppercase;margin-top:4px">Oxford · +8% premium</div>
+          <div class="cc-sub" id="c-ox-i">,  net IRR</div>
+          <div style="font-size:10px;color:var(--muted);margin-top:6px">Highest pipeline maturity index across UK cities. Established spinout infrastructure with lower competitive pressure on entry valuations.</div>
+        </div>
+        <div class="city-card" style="grid-column:1/-1">
+          <div class="cc-val" id="c-lon-m">, </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:4px">London · −5% entry premium</div>
+          <div class="cc-sub" id="c-lon-i">,  net IRR</div>
+          <div style="font-size:10px;color:var(--muted);margin-top:6px">Largest deal flow and exit liquidity in the UK. Elevated competitive pressure at entry compresses initial investment multiples relative to Cambridge.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHARTS ROW -->
+  <div class="two-col" style="margin-bottom:28px">
+    <div>
+      <h3>J-Curve: NAV & Distribution Profile</h3>
+      <div class="chart-wrap">
+        <canvas id="jCurve" height="220"></canvas>
+      <div class="chart-insight"><strong>Key takeaway:</strong> The J-curve reflects standard VC fund dynamics: early fee drag creates negative NAV in years one and two, followed by compounding portfolio appreciation through years three to seven and concentrated distributions in the final years. Cambridge's +12% city premium advances the inflection point relative to the UK average.</div>
+      </div>
+    </div>
+    <div>
+      <h3>Power Law: Return Attribution by Bucket</h3>
+      <div class="chart-wrap">
+        <canvas id="pwPie" height="220"></canvas>
+      <div class="chart-insight"><strong>Key takeaway:</strong> Return attribution is concentrated in the winner cohort, consistent with power law dynamics in deep-tech venture. Even under the bear case, a small number of outlier exits generate the majority of fund value. Portfolio construction and winner follow-on capital are the primary levers of return optimisation.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENARIO COMPARISON -->
+  <h3>Scenario Comparison, Bear / Base / Bull</h3>
+  <div class="sc-compare">
+    <div class="scc bear">
+      <div class="scc-label bear">Bear Case</div>
+      <div style="font-size:10px;color:var(--muted);margin-bottom:12px">Loss rate 55%. Winner rate 5%. Winner MOIC 20x.</div>
+      <div class="scc-row"><span class="scc-key">Gross MOIC</span><span class="scc-val" id="sc-bear-gm" style="color:var(--red)">, </span></div>
+      <div class="scc-row"><span class="scc-key">Net MOIC</span><span class="scc-val" id="sc-bear-nm" style="color:var(--red)">, </span></div>
+      <div class="scc-row"><span class="scc-key">Net IRR</span><span class="scc-val" id="sc-bear-irr" style="color:var(--red)">, </span></div>
+      <div class="scc-row"><span class="scc-key">DPI</span><span class="scc-val" id="sc-bear-dpi" style="color:var(--red)">, </span></div>
+    </div>
+    <div class="scc base">
+      <div class="scc-label base">Base Case, Most Likely</div>
+      <div style="font-size:10px;color:var(--muted);margin-bottom:12px">Loss rate 40%. Winner rate 10%. Winner MOIC 25x.</div>
+      <div class="scc-row"><span class="scc-key">Gross MOIC</span><span class="scc-val" id="sc-base-gm" style="color:#5A8ACF">, </span></div>
+      <div class="scc-row"><span class="scc-key">Net MOIC</span><span class="scc-val" id="sc-base-nm" style="color:#5A8ACF">, </span></div>
+      <div class="scc-row"><span class="scc-key">Net IRR</span><span class="scc-val" id="sc-base-irr" style="color:#5A8ACF">, </span></div>
+      <div class="scc-row"><span class="scc-key">DPI</span><span class="scc-val" id="sc-base-dpi" style="color:#5A8ACF">, </span></div>
+    </div>
+    <div class="scc bull">
+      <div class="scc-label bull">Bull Case</div>
+      <div style="font-size:10px;color:var(--muted);margin-bottom:12px">Loss rate 25%. Winner rate 20%. Winner MOIC 35x.</div>
+      <div class="scc-row"><span class="scc-key">Gross MOIC</span><span class="scc-val" id="sc-bull-gm" style="color:var(--green)">, </span></div>
+      <div class="scc-row"><span class="scc-key">Net MOIC</span><span class="scc-val" id="sc-bull-nm" style="color:var(--green)">, </span></div>
+      <div class="scc-row"><span class="scc-key">Net IRR</span><span class="scc-val" id="sc-bull-irr" style="color:var(--green)">, </span></div>
+      <div class="scc-row"><span class="scc-key">DPI</span><span class="scc-val" id="sc-bull-dpi" style="color:var(--green)">, </span></div>
+    </div>
+  </div>
+  <div class="chart-src" style="margin-bottom:24px">Base and Bull case scenarios outperform the BVCA top-quartile benchmark of 11.0% median net IRR and 3.0x to 4.0x top-quartile net MOIC. Source: BVCA Performance Measurement Survey 2024.</div>
+
+  <!-- SENSITIVITY MATRIX -->
+  <div class="rule"></div>
+
+  <h3>UK Golden Triangle vs. Global VC Benchmark Returns · Net MOIC and Net IRR</h3>
+  <div class="two-col" style="margin-top:16px;margin-bottom:28px;align-items:start">
+    <div class="chart-wrap">
+      <div class="chart-title">Net IRR Distribution · UK Golden Triangle vs. UK/Global VC Benchmarks</div>
+      <canvas id="benchIrrChart" height="230"></canvas>
+      <div class="chart-src">Source: BVCA Performance Measurement Survey 2024 · PitchBook 2024</div>
+      <div class="chart-insight"><strong>Key takeaway:</strong> The UK base case net IRR of 13.0% exceeds the BVCA 2024 UK VC median of 11.0% and approaches the top-quartile threshold. The bull case of 19.3% places the portfolio comfortably within top-quartile territory. The bear case of 6.0% remains positive and returns capital.</div>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-title">Historical Exit Multiple Distribution · UK Growth-Stage Portfolio</div>
+      <canvas id="exitDistChart" height="230"></canvas>
+      <div class="chart-src">Source: Dealroom · BVCA · UK VC exit data 2015 to 2024</div>
+      <div class="chart-insight"><strong>Key takeaway:</strong> The historical exit distribution confirms the power law structure. Write-offs and sub-1x returns account for approximately 50% of exits by number, but the 5x to 25x+ cohort generates the substantial majority of aggregate return. The UK's depth in fintech and AI skews this distribution favourably versus the broader market.</div>
+    </div>
+  </div>
+
+    <h3>Sensitivity Matrix, Net MOIC by Winner Rate & Winner MOIC</h3>
+  <p style="font-size:11px;color:var(--muted);margin-bottom:14px">All other parameters maintained at base case assumptions (40% loss rate, 35% zombie rate, 20 portfolio companies, 10-year fund life, 2% management fee, 20% carried interest). <span style="background:rgba(10,74,40,.18);padding:2px 6px;font-family:'IBM Plex Mono',monospace;font-size:9px">3.5×+</span> = top quartile &nbsp; <span style="background:rgba(15,35,64,.12);padding:2px 6px;font-family:'IBM Plex Mono',monospace;font-size:9px">2×+</span> = above benchmark &nbsp; <span style="background:rgba(196,154,44,.12);padding:2px 6px;font-family:'IBM Plex Mono',monospace;font-size:9px">1.3×+</span> = acceptable &nbsp; <span style="background:rgba(122,20,20,.12);padding:2px 6px;font-family:'IBM Plex Mono',monospace;font-size:9px">sub</span> = below benchmark</p>
+  <div class="sens-wrap">
+    <table id="sensMatrix"></table>
+  </div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div>Prepared by Maz Ismail, PhD · University of Cambridge · UK Golden Triangle fintech & AI analysis · June 2026</div>
+  <div>Strictly Confidential · For Authorised Recipients Only · Not for Distribution</div>
+</div>
+
+</div><!-- .page -->
+
+<script>
+Chart.defaults.font.family="'IBM Plex Mono',monospace";
+Chart.defaults.font.size=10;
+Chart.defaults.color='#888880';
+Chart.defaults.plugins.legend.labels.boxWidth=9;
+Chart.defaults.plugins.legend.labels.padding=14;
+
+const C={
+  navy:'#1A3A6B',navy2:'#2A5AAB',green:'#0A4A28',green2:'#1A7A48',
+  red:'#9A2424',gold:'#7A5A14',gold2:'#C49A2C',camb:'#006B54',
+  rule:'rgba(60,60,60,0.6)'
+};
+
+
+
+/* ── TAB 2 CHARTS ── */
+new Chart(document.getElementById('mktSizeChart'),{type:'bar',data:{
+  labels:['Digital Payments','Applied AI','Cybersecurity','Cloud / Data','Embedded Finance','Enterprise SaaS'],
+  datasets:[
+    {label:'2024 (US$bn)',data:[110,95,185,90,40,250],backgroundColor:'rgba(15,35,64,0.3)',borderColor:C.navy,borderWidth:1,borderRadius:2},
+    {label:'2030E (US$bn)',data:[260,310,375,210,110,500],backgroundColor:C.camb,borderColor:C.camb,borderWidth:1,borderRadius:2}
+  ]
+},options:{responsive:true,maintainAspectRatio:true,
+  plugins:{legend:{position:'bottom'}},
+  scales:{x:{grid:{display:false}},y:{grid:{color:C.rule},ticks:{callback:v=>'$'+v+'bn'}}}}});
+
+new Chart(document.getElementById('elmAlignChart'),{type:'radar',data:{
+  labels:['Payments','Lending / BNPL','Applied AI','Fraud & Identity','Enterprise SaaS','Cybersecurity','Cloud / Data','WealthTech'],
+  datasets:[
+    {label:'UK Pipeline Depth',data:[95,85,92,88,86,90,82,80],
+      backgroundColor:'rgba(0,107,84,0.15)',borderColor:C.camb,borderWidth:2,pointBackgroundColor:C.camb,pointRadius:3},
+    {label:"Zain's Strategic Priority",data:[100,90,90,85,75,80,75,70],
+      backgroundColor:'rgba(196,154,44,0.08)',borderColor:C.gold2,borderWidth:1.5,pointBackgroundColor:C.gold2,pointRadius:3,borderDash:[4,3]}
+  ]
+},options:{responsive:true,maintainAspectRatio:true,
+  plugins:{legend:{position:'bottom'}},
+  scales:{r:{grid:{color:C.rule},angleLines:{color:C.rule},ticks:{backdropColor:'transparent',font:{size:8}},pointLabels:{font:{size:9}}}}}});
+
+/* ── TAB SWITCHING ── */
+function show(id,el){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tn-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo(0,0);
+  if(id==='s3'){upd();buildSens();buildScComp()}
+}
+
+/* ── TAB 1 CHARTS ── */
+new Chart(document.getElementById('stageChart'),{type:'doughnut',data:{
+  labels:['Startup (667)','Early Scale-up (222)','Scale-up (131)','Established (131)'],
+  datasets:[{data:[667,222,131,131],
+    backgroundColor:[C.rule,'#9A9690',C.navy2,C.camb],
+    borderWidth:0,hoverOffset:4}]
+},options:{responsive:true,maintainAspectRatio:true,cutout:'58%',
+  plugins:{legend:{position:'bottom',labels:{font:{size:9}}}}}});
+
+new Chart(document.getElementById('formChart'),{type:'bar',data:{
+  labels:['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025E'],
+  datasets:[
+    {label:'AI & Software',data:[18,21,24,28,32,24,31,35,29,22,18],backgroundColor:C.camb,borderRadius:2},
+    {label:'DeepTech',data:[12,14,16,18,20,15,20,22,18,14,11],backgroundColor:C.navy2,borderRadius:2}
+  ]
+},options:{responsive:true,maintainAspectRatio:true,
+  plugins:{legend:{position:'bottom'}},
+  scales:{x:{grid:{display:false},stacked:true},y:{grid:{color:C.rule},stacked:true}}}});
+
+/* ── NEW TAB 1 CHARTS ── */
+
+// Spinout investment bar chart
+new Chart(document.getElementById('spinoutChart'),{type:'bar',data:{
+  labels:['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'],
+  datasets:[{
+    label:'Spinout Investment (£m)',
+    data:[46,58,72,95,128,164,290,420,610,879],
+    backgroundColor:[...Array(9).fill('rgba(0,107,84,0.25)'), C.camb],
+    borderColor:[...Array(9).fill('rgba(0,107,84,0.6)'), C.camb],
+    borderWidth:1, borderRadius:2
+  }]
+},options:{responsive:true,maintainAspectRatio:true,
+  plugins:{legend:{display:false}},
+  scales:{x:{grid:{display:false}},y:{grid:{color:C.rule},ticks:{callback:v=>'£'+v+'m'}}}}});
+
+// Sector composition doughnut
+new Chart(document.getElementById('sectorMixChart'),{type:'doughnut',data:{
+  labels:['AI & Software (334)','DeepTech (230)','Biotech (164)','EdTech (98)','FinTech (67)','Other (258)'],
+  datasets:[{
+    data:[334,230,164,98,67,258],
+    backgroundColor:[C.camb,C.navy2,'rgba(10,74,40,0.7)','rgba(196,154,44,0.6)','rgba(122,20,20,0.5)','rgba(197,191,178,0.5)'],
+    borderColor:[C.camb,C.navy2,C.green,C.gold2,C.red,'rgba(197,191,178,0.8)'],
+    borderWidth:1.5, hoverOffset:5
+  }]
+},options:{responsive:true,maintainAspectRatio:true,cutout:'56%',
+  plugins:{legend:{position:'bottom',labels:{font:{size:9},boxWidth:8,padding:10}}}}});
+
+// Tech density horizontal bar
+new Chart(document.getElementById('densityChart'),{type:'bar',data:{
+  labels:['Cambridge','Oxford','London','Edinburgh','Manchester','Berlin','Stockholm'],
+  datasets:[{
+    label:'Tech cos per 10k population',
+    data:[50.9,38.2,22.4,18.7,14.2,20.1,24.6],
+    backgroundColor:[C.camb,C.green,'rgba(15,35,64,0.5)','rgba(15,35,64,0.35)','rgba(15,35,64,0.25)','rgba(150,150,150,0.3)','rgba(150,150,150,0.35)'],
+    borderRadius:2
+  }]
+},options:{responsive:true,maintainAspectRatio:true,indexAxis:'y',
+  plugins:{legend:{display:false}},
+  scales:{x:{grid:{color:C.rule},ticks:{callback:v=>v}},y:{grid:{display:false}}}}});
+
+// Funding gap line + bar combo
+new Chart(document.getElementById('fundingGapChart'),{type:'line',data:{
+  labels:['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025E'],
+  datasets:[
+    {
+      label:'Total Cambridge Investment (£m)',
+      data:[120,180,260,380,520,640,980,1420,1750,2100,2400],
+      borderColor:C.navy,backgroundColor:'rgba(15,35,64,0.06)',
+      tension:.4,fill:true,borderWidth:1.5,pointRadius:2.5,yAxisID:'y'
+    },
+    {
+      label:'UK Domestic Share (%)',
+      data:[38,34,30,26,22,18,15,12,10,9,8.5],
+      borderColor:C.red,backgroundColor:'rgba(122,20,20,0.0)',
+      tension:.4,fill:false,borderWidth:2,pointRadius:3,borderDash:[5,4],yAxisID:'y1'
+    }
+  ]
+},options:{responsive:true,maintainAspectRatio:true,
+  plugins:{legend:{position:'bottom'}},
+  scales:{
+    x:{grid:{color:C.rule}},
+    y:{grid:{color:C.rule},position:'left',ticks:{callback:v=>'£'+v+'m'}},
+    y1:{position:'right',grid:{display:false},ticks:{callback:v=>v+'%'},min:0,max:50}
+  }}});
+
+// AI formation cumulative area chart
+new Chart(document.getElementById('aiFormationChart'),{type:'line',data:{
+  labels:['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025E'],
+  datasets:[
+    {
+      label:'AI & Software Companies (cumulative)',
+      data:[18,39,63,91,123,147,178,213,242,264,280],
+      borderColor:C.camb,backgroundColor:'rgba(0,107,84,0.08)',
+      tension:.4,fill:true,borderWidth:1.5,pointRadius:2.5
+    },
+    {
+      label:'DeepTech Companies (cumulative)',
+      data:[12,26,42,60,80,95,115,137,158,172,185],
+      borderColor:C.navy2,backgroundColor:'rgba(26,58,107,0.06)',
+      tension:.4,fill:true,borderWidth:1.5,pointRadius:2.5
+    }
+  ]
+},options:{responsive:true,maintainAspectRatio:true,
+  plugins:{legend:{position:'bottom'}},
+  scales:{x:{grid:{color:C.rule}},y:{grid:{color:C.rule}}}}});
+
+
+/* ── SCENARIO MODEL ── */
+const SCS={
+  bear:{life:10,fee:2,carry:20,res:30,cos:20,fail:55,zmb:30,mid:10,win:5,wm:20,zmx:1.3,midx:7},
+  base:{life:10,fee:2,carry:20,res:30,cos:20,fail:40,zmb:35,mid:15,win:10,wm:25,zmx:1.3,midx:7},
+  bull:{life:10,fee:2,carry:20,res:30,cos:20,fail:25,zmb:30,mid:25,win:20,wm:35,zmx:1.3,midx:7}
+};
+
+function setSc(s){
+  document.querySelectorAll('.sc-btn').forEach(b=>b.classList.remove('on'));
+  document.querySelector('.sc-btn.'+s).classList.add('on');
+  const p=SCS[s];
+  Object.entries(p).forEach(([k,v])=>{const el=document.getElementById('s-'+k);if(el)el.value=v});
+  upd();
+}
+
+function gv(id){return parseFloat(document.getElementById('s-'+id).value)}
+function calcIRR(moic,y){return(Math.pow(Math.max(moic,.001),1/y)-1)*100}
+
+function compute(p){
+  const tot=p.fail+p.zmb+p.mid+p.win;
+  const fees=p.amt*p.fee/100*p.life;
+  const deploy=(p.amt-fees)*(1-p.res/100);
+  const perCo=deploy/p.cos;
+  const nF=Math.round(p.cos*p.fail/tot),nZ=Math.round(p.cos*p.zmb/tot),
+        nM=Math.round(p.cos*p.mid/tot),nW=Math.max(1,Math.round(p.cos*p.win/tot));
+  const rF=0,rZ=nZ*perCo*p.zmx,rM=nM*perCo*p.midx,rW=nW*perCo*p.wm;
+  const gross=rF+rZ+rM+rW;
+  const gm=gross/deploy;
+  const carry=Math.max(0,(gross-p.amt)*p.carry/100);
+  const net=gross-carry;
+  const nm=net/p.amt;
+  const irr=calcIRR(nm,p.life);
+  const dpi=(net*.65)/p.amt;
+  return{gross,gm,net,nm,irr,dpi,nF,nZ,nM,nW,perCo,deploy,rF,rZ,rM,rW};
+}
+
+function fmtM(n){return n.toFixed(2)+'×'}
+function fmtP(n){return n.toFixed(1)+'%'}
+function fmtA(n,base){
+  if(base===1)return fmtM(n);
+  if(n>=1e9)return'£'+(n/1e9).toFixed(2)+'bn';
+  if(n>=1e6)return'£'+(n/1e6).toFixed(2)+'m';
+  if(n>=1e3)return'£'+(n/1e3).toFixed(1)+'k';
+  return'£'+n.toFixed(2);
+}
+
+let jC=null,pC=null;
+
+function upd(){
+  const amt=parseFloat(document.getElementById('investAmt').value)||10000000;
+  const p={
+    life:gv('life'),fee:gv('fee'),carry:gv('carry'),res:gv('res'),cos:gv('cos'),
+    fail:gv('fail'),zmb:gv('zmb'),mid:gv('mid'),win:gv('win'),wm:gv('wm'),
+    zmx:gv('zmx'),midx:gv('midx'),amt
+  };
+  document.getElementById('v-life').textContent=p.life+' yrs';
+  document.getElementById('v-fee').textContent=p.fee+'%';
+  document.getElementById('v-carry').textContent=p.carry+'%';
+  document.getElementById('v-res').textContent=p.res+'%';
+  document.getElementById('v-cos').textContent=p.cos;
+  document.getElementById('v-seed').textContent=gv('seed')+'%';
+  document.getElementById('v-zmx').textContent=p.zmx+'×';
+  document.getElementById('v-midx').textContent=p.midx+'×';
+  document.getElementById('v-fail').textContent=p.fail+'%';
+  document.getElementById('v-zmb').textContent=p.zmb+'%';
+  document.getElementById('v-mid').textContent=p.mid+'%';
+  document.getElementById('v-win').textContent=p.win+'%';
+  document.getElementById('v-wm').textContent=p.wm+'×';
+
+  const m=compute(p);
+
+  document.getElementById('r-gm').textContent=fmtM(m.gm);
+  document.getElementById('r-gm-sub').textContent='Returns '+fmtA(m.gross,amt)+' gross';
+  document.getElementById('r-nm').textContent=fmtM(m.nm);
+  const irrEl=document.getElementById('r-irr');
+  irrEl.textContent=fmtP(m.irr);
+  irrEl.style.color=m.irr>=15?'#5AAA80':m.irr>=11?'#88AADD':'#CC8888';
+  document.getElementById('r-dpi').textContent=fmtM(m.dpi);
+  document.getElementById('r-tot-sub').textContent='Per £ called · Total: '+fmtA(m.net,amt);
+
+  // Power law table
+  const rows=[
+    {n:'💀  Written Off (0×)',c:m.nF,mo:0,r:m.rF,cl:'hl-r'},
+    {n:'😐  Zombie / Break-even',c:m.nZ,mo:p.zmx,r:m.rZ,cl:''},
+    {n:'✓  Mid-range ('+p.midx+'×)',c:m.nM,mo:p.midx,r:m.rM,cl:'hl-n'},
+    {n:'★  Winners ('+p.wm+'×+)',c:m.nW,mo:p.wm,r:m.rW,cl:'hl-g'},
+  ];
+  document.getElementById('pwBody').innerHTML=rows.map(r=>{
+    const pct=m.gross>0?(r.r/m.gross*100):0;
+    const bw=Math.min(pct*1.5,100);
+    const bc=r.cl==='hl-g'?C.green:r.cl==='hl-n'?C.navy:r.cl==='hl-r'?C.red:'#9A9690';
+    return`<tr>
+      <td>${r.n}</td>
+      <td class="num">${r.c}</td>
+      <td class="num">${r.mo}×</td>
+      <td class="num">${fmtA(r.c*m.perCo,amt)}</td>
+      <td class="num ${r.cl}">${fmtA(r.r,amt)}</td>
+      <td class="num ${r.cl}">${pct.toFixed(1)}%</td>
+      <td><div style="width:${bw}%;height:3px;background:${bc};display:inline-block"></div></td>
+    </tr>`;
+  }).join('');
+
+  // City-adjusted
+  const lonM=m.nm*.95,camM=m.nm*1.12,oxM=m.nm*1.08;
+  document.getElementById('c-lon-m').textContent=fmtM(lonM);
+  document.getElementById('c-cam-m').textContent=fmtM(camM);
+  document.getElementById('c-ox-m').textContent=fmtM(oxM);
+  document.getElementById('c-lon-i').textContent=fmtP(calcIRR(lonM,p.life))+' net IRR';
+  document.getElementById('c-cam-i').textContent=fmtP(calcIRR(camM,p.life))+' net IRR';
+  document.getElementById('c-ox-i').textContent=fmtP(calcIRR(oxM,p.life))+' net IRR';
+
+  // J-Curve
+  const yrs=Array.from({length:p.life+1},(_,i)=>i);
+  const nav=yrs.map(y=>{
+    if(y<2)return-(y/2)*m.deploy*.4;
+    const t=(y-2)/(p.life-2);
+    return m.gross*Math.pow(t,1.6)-m.deploy*(1-Math.pow(t,.5)*.3);
+  });
+  const dist=yrs.map(y=>{
+    const t=Math.max(0,(y-p.life*.5))/(p.life*.5);
+    return m.net*Math.pow(t,1.9);
+  });
+
+  if(jC)jC.destroy();
+  jC=new Chart(document.getElementById('jCurve'),{type:'line',data:{
+    labels:yrs.map(y=>'Y'+y),
+    datasets:[
+      {label:'NAV',data:nav,borderColor:C.navy,backgroundColor:'rgba(15,35,64,.05)',tension:.4,fill:true,borderWidth:1.5,pointRadius:2},
+      {label:'Cumulative Distributions',data:dist,borderColor:C.green,borderWidth:1.5,tension:.4,pointRadius:2,borderDash:[5,4]}
+    ]
+  },options:{responsive:true,maintainAspectRatio:true,
+    plugins:{legend:{position:'bottom'}},
+    scales:{x:{grid:{color:C.rule}},
+      y:{grid:{color:C.rule},ticks:{callback:v=>fmtA(v,amt)}}}}});
+
+  if(pC)pC.destroy();
+  pC=new Chart(document.getElementById('pwPie'),{type:'doughnut',data:{
+    labels:['Write-offs','Zombies','Mid-range','Winners'],
+    datasets:[{data:[m.rF||.01,m.rZ,m.rM,m.rW],
+      backgroundColor:['rgba(122,20,20,.15)','rgba(122,90,20,.15)','rgba(15,35,64,.15)','rgba(10,74,40,.15)'],
+      borderColor:[C.red,C.gold,C.navy,C.green],borderWidth:1.5,hoverOffset:5}]
+  },options:{responsive:true,maintainAspectRatio:true,cutout:'58%',
+    plugins:{legend:{position:'bottom'}}}});
+}
+
+function buildSens(){
+  const wr=[5,8,10,12,15,20,25];
+  const wm=[50,40,35,30,25,20,15];
+  const el=document.getElementById('sensMatrix');
+  if(!el)return;
+  let h='<thead><tr><th>MOIC ↓ / Win% →</th>';
+  wr.forEach(r=>h+=`<th>${r}%</th>`);
+  h+='</tr></thead><tbody>';
+  wm.forEach(m=>{
+    h+=`<tr><td class="rlbl">${m}×</td>`;
+    wr.forEach(r=>{
+      const res=compute({life:10,fee:2,carry:20,res:30,cos:20,fail:40,zmb:35,mid:15,win:r,wm:m,zmx:1.3,midx:7,amt:1});
+      const v=res.nm;
+      const c=v>=3.5?'c4':v>=2?'c3':v>=1.3?'c2':'c1';
+      h+=`<td class="${c}">${v.toFixed(1)}×</td>`;
+    });
+    h+='</tr>';
+  });
+  h+='</tbody>';
+  el.innerHTML=h;
+}
+
+function buildScComp(){
+  [['bear',{life:10,fee:2,carry:20,res:30,cos:20,fail:55,zmb:30,mid:10,win:5,wm:20,zmx:1.3,midx:7,amt:1}],
+   ['base',{life:10,fee:2,carry:20,res:30,cos:20,fail:40,zmb:35,mid:15,win:10,wm:25,zmx:1.3,midx:7,amt:1}],
+   ['bull',{life:10,fee:2,carry:20,res:30,cos:20,fail:25,zmb:30,mid:25,win:20,wm:35,zmx:1.3,midx:7,amt:1}]
+  ].forEach(([s,p])=>{
+    const m=compute(p);
+    document.getElementById('sc-'+s+'-gm').textContent=fmtM(m.gm);
+    document.getElementById('sc-'+s+'-nm').textContent=fmtM(m.nm);
+    document.getElementById('sc-'+s+'-irr').textContent=fmtP(m.irr);
+    document.getElementById('sc-'+s+'-dpi').textContent=fmtM(m.dpi);
+  });
+}
+
+
+/* ── TAB 3 BENCHMARK CHARTS ── */
+new Chart(document.getElementById('benchIrrChart'),{type:'bar',data:{
+  labels:['Global VC Median','UK VC Median (BVCA)','UK VC Top Quartile','UK Tech Bear','UK Tech Base','UK Tech Bull'],
+  datasets:[{
+    label:'Net IRR (%)',
+    data:[8.2,11.0,18.5,null,null,null],
+    backgroundColor:['rgba(150,150,150,0.3)','rgba(15,35,64,0.3)','rgba(15,35,64,0.5)',null,null,null],
+    borderColor:['rgba(150,150,150,0.6)',C.navy,C.navy,null,null,null],
+    borderWidth:1,borderRadius:2
+  },{
+    label:'UK Scenario IRR (%)',
+    data:[null,null,null,6.0,13.0,19.3],
+    backgroundColor:[null,null,null,'rgba(122,20,20,0.4)','rgba(0,107,84,0.4)','rgba(0,107,84,0.7)'],
+    borderColor:[null,null,null,C.red,C.camb,C.green],
+    borderWidth:1,borderRadius:2
+  }]
+},options:{responsive:true,maintainAspectRatio:true,
+  plugins:{legend:{position:'bottom'}},
+  scales:{x:{grid:{display:false}},y:{grid:{color:C.rule},ticks:{callback:v=>v+'%'}}}}});
+
+new Chart(document.getElementById('exitDistChart'),{type:'bar',data:{
+  labels:['0.0x (write-off)','0.5x, 1.0x','1.0x, 2.0x','2x, 5x','5x, 10x','10x, 25x','25x+'],
+  datasets:[{
+    label:'% of exits (historical Cambridge portfolio)',
+    data:[38,12,15,18,9,5,3],
+    backgroundColor:[
+      'rgba(122,20,20,0.5)',
+      'rgba(122,90,20,0.3)',
+      'rgba(150,150,150,0.3)',
+      'rgba(26,58,107,0.4)',
+      'rgba(15,35,64,0.5)',
+      'rgba(0,107,84,0.5)',
+      'rgba(0,107,84,0.8)'
+    ],
+    borderRadius:2,borderWidth:0
+  }]
+},options:{responsive:true,maintainAspectRatio:true,
+  plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.parsed.y+'% of exits'}}},
+  scales:{x:{grid:{display:false}},y:{grid:{color:C.rule},ticks:{callback:v=>v+'%'}}}}});
+
+// Init
+upd();
+buildSens();
+buildScComp();
+</script>
+</body>
+</html>
